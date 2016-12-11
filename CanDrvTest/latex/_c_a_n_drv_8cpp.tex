@@ -1,0 +1,317 @@
+\hypertarget{_c_a_n_drv_8cpp}{}\section{C\+A\+N\+Drv.\+cpp File Reference}
+\label{_c_a_n_drv_8cpp}\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+
+
+C\+A\+N\+Drv cpp file.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}C\+A\+N\+Drv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_a088528be8aa07bb9da708627ed493953}{C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt} (\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate} baudrate)
+\begin{DoxyCompactList}\small\item\em set the Timing Parameters for the C\+AN. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_aff687219e44869233e1a2c0f6ee9e636}{C\+L\+E\+A\+R\+\_\+\+R\+X\+OK} ()
+\begin{DoxyCompactList}\small\item\em Clears the interrupt F\+L\+AG. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_a77ecd70965e06a95bff41ab4238e79ff}{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB} (void)
+\begin{DoxyCompactList}\small\item\em advanced Function not needed for normal operation \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_a360efc7188ee6016bf9ac670fcdee966}{C\+A\+N\+Drv\+\_\+\+Init} (\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate} baudrate)
+\begin{DoxyCompactList}\small\item\em Initialize the C\+AN Driver. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_ac76ff81e2885d6ad3c4cdefe970d9c5d}{get\+M\+O\+Bsetup} (\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms)
+\begin{DoxyCompactList}\small\item\em advanced Function not needed for normal operation \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_a1f8b9cb3232c9054776d20516ff469f8}{setup\+M\+OB} (\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms)
+\begin{DoxyCompactList}\small\item\em advanced Function not needed for normal operation \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_a51aea225137a118f781aa08cb154d3d9}{receive\+Data\+\_\+generic} (uint8\+\_\+t mob\+\_\+\+NR)
+\begin{DoxyCompactList}\small\item\em generic Receive funtion for an Interrupt Driven M\+OB. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8cpp_a9cfd04f5fd0202403aed6b9a33e99d5e}{receive\+Data\+\_\+generic\+\_\+restart} (uint8\+\_\+t mob\+\_\+\+NR)
+\begin{DoxyCompactList}\small\item\em generic Receive funtion for an Interrupt Driven M\+OB. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_a07b2b0f274992196ab34c995f3e5b7d7}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init} (\hyperlink{struct_mob_config_element}{Mob\+Config\+Element} $\ast$C\+A\+N\+\_\+\+Config)
+\begin{DoxyCompactList}\small\item\em Initialize the F\+R\+M\+Man. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_a98a712bb439c5d06499e61f614074a0a}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em sends a configured Message \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_a20d875f5fb6b4d2cecb024558437a4d8}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg} (uint8\+\_\+t index, \hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms, uint8\+\_\+t iteration=0)
+\begin{DoxyCompactList}\small\item\em get a received Can Message. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8cpp_ab2082e8760e05cb4ea45f3f3d926c89b}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg} (uint8\+\_\+t index, \hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms)
+\begin{DoxyCompactList}\small\item\em get a received Can Message. \end{DoxyCompactList}\item 
+\hyperlink{_c_a_n_drv_8cpp_a4ddfcdee41507a0f9e59916a20c65c96}{I\+SR} (C\+A\+N\+\_\+\+I\+N\+T\+\_\+vect)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_mob_config_element}{Mob\+Config\+Element} $\ast$ \hyperlink{_c_a_n_drv_8cpp_abf64082dbc5fd12cea9a5a62b9cae014}{\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\+A\+N\+Drv cpp file. 
+
+This File contains the Implementation of the C\+A\+N\+Drv and the F\+R\+M\+Man 
+
+\subsection{Function Documentation}
+\hypertarget{_c_a_n_drv_8cpp_a77ecd70965e06a95bff41ab4238e79ff}{}\label{_c_a_n_drv_8cpp_a77ecd70965e06a95bff41ab4238e79ff} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB@{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB}}
+\index{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB@{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+O\+B()}{CANDrv\_ClearAll\_MOB()}}
+{\footnotesize\ttfamily C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+advanced Function not needed for normal operation 
+
+This function clear all M\+OB registers. This is used in I\+NI. \hypertarget{_c_a_n_drv_8cpp_a20d875f5fb6b4d2cecb024558437a4d8}{}\label{_c_a_n_drv_8cpp_a20d875f5fb6b4d2cecb024558437a4d8} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg()}{CANDrv\_FRMMan\_Get\_Msg()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms,  }\item[{uint8\+\_\+t}]{iteration = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+get a received Can Message. 
+
+This function reads a received Can Message from the internal Buffer.~\newline
+ It also retries to read if there were any Changes, because of an Interrupt, receiving a new Message.~\newline
+ In this case the read operation is retried.~\newline
+ ~\newline
+ !\+O\+N\+LY U\+S\+ED I\+N\+T\+E\+R\+N\+A\+L\+L\+Y!
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the mob to read \\
+\hline
+{\em ms} & O\+U\+T\+P\+UT Pointer to a message settings object, where the data is written. \\
+\hline
+{\em iteration} & Helper argument to limit the number of tries \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_ab2082e8760e05cb4ea45f3f3d926c89b}{}\label{_c_a_n_drv_8cpp_ab2082e8760e05cb4ea45f3f3d926c89b} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg()}{CANDrv\_FRMMan\_Get\_Msg()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms }\end{DoxyParamCaption})}
+
+
+
+get a received Can Message. 
+
+This function reads a received Can Message from the internal Buffer.~\newline
+ It also retries to read if there were any Changes, because of an Interrupt, receiving a new Message.~\newline
+ In this case the read operation is retried.~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the mob to read \\
+\hline
+{\em ms} & O\+U\+T\+P\+UT Pointer to a message settings object, where the data is written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_a07b2b0f274992196ab34c995f3e5b7d7}{}\label{_c_a_n_drv_8cpp_a07b2b0f274992196ab34c995f3e5b7d7} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init()}{CANDrv\_FRMMan\_Init()}}
+{\footnotesize\ttfamily C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{struct_mob_config_element}{Mob\+Config\+Element} $\ast$}]{C\+A\+N\+\_\+\+Config }\end{DoxyParamCaption})}
+
+
+
+Initialize the F\+R\+M\+Man. 
+
+This function initializes the F\+R\+M\+Man with the given C\+A\+N\+\_\+\+Config.~\newline
+~\newline
+ Example configuration\+: 
+\begin{DoxyCode}
+  \textcolor{comment}{//Make sure all these variables are global an not in a scoped context, like a funtion.}
+  uint8\_t data\_130[8];
+  uint8\_t data\_7e8[8];
+  uint8\_t data\_7e0[8];
+  \hyperlink{struct_mob_config_element}{MobConfigElement} CAN\_Config[] =
+  \{
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a919a500140d106137d774027efced018}{TX\_DATA\_SW\_DRIVEN},\{0x7e0,0x000,0,8,(uint8\_t*)&data\_7e0\}\},\textcolor{comment}{//This Messsage can be sent
+       with CANDrv\_FRMMan\_Send\_Msg(0);}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{RX\_DATA\_INTERRUPT\_DRIVEN},\{0x130,0x3FF,0,8,(uint8\_t*)&data\_130\},&
+      \hyperlink{_c_a_n_drv_8cpp_a9cfd04f5fd0202403aed6b9a33e99d5e}{receiveData\_generic\_restart},0,0\},\textcolor{comment}{//This Message will be received with an
+       Interrupt. It will be directly enabled again}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{RX\_DATA\_INTERRUPT\_DRIVEN},\{0x7e8,0x3FF,0,8,(uint8\_t*)&data\_7e8\},&
+      \hyperlink{_c_a_n_drv_8cpp_a51aea225137a118f781aa08cb154d3d9}{receiveData\_generic},0,0\},\textcolor{comment}{//This Message will be received with an Interrupt. It will be
+       only received once!}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\},\textcolor{comment}{//unused MOBs}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\},
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\}
+  \};
+  
+  \textcolor{keywordtype}{void} setup() \{
+  data\_7e0[0] = 0x02; \textcolor{comment}{//Initialize the Message to send.}
+  data\_7e0[1] = 0x01; 
+  data\_7e0[2] = 0x05; 
+  data\_7e0[3] = 0x33;
+  data\_7e0[4] = 0x44;
+  data\_7e0[5] = 0x55;
+  data\_7e0[6] = 0x66;
+  data\_7e0[7] = 0x77;
+  \hyperlink{_c_a_n_drv_8cpp_a360efc7188ee6016bf9ac670fcdee966}{CANDrv\_Init}(\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59ae553ec46a12968b619c3fcb9b682ed58}{CAN\_500k}); \textcolor{comment}{//init CANDrv}
+  \hyperlink{_c_a_n_drv_8cpp_a07b2b0f274992196ab34c995f3e5b7d7}{CANDrv\_FRMMan\_Init}(CAN\_Config);\textcolor{comment}{//init FRMMan}
+  sei();\textcolor{comment}{//enable interrupts. This is neccessary for the Interrupt driven receives}
+\}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+A\+N\+\_\+\+Config} & The C\+A\+N\+\_\+\+Config to use. For examples see funtion description. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_a98a712bb439c5d06499e61f614074a0a}{}\label{_c_a_n_drv_8cpp_a98a712bb439c5d06499e61f614074a0a} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg()}{CANDrv\_FRMMan\_Send\_Msg()}}
+{\footnotesize\ttfamily C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+sends a configured Message 
+
+This function sends a predefined Message. 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the Message to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_a360efc7188ee6016bf9ac670fcdee966}{}\label{_c_a_n_drv_8cpp_a360efc7188ee6016bf9ac670fcdee966} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+Init}}
+\index{C\+A\+N\+Drv\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+Init}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+Init()}{CANDrv\_Init()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate}}]{baudrate }\end{DoxyParamCaption})}
+
+
+
+Initialize the C\+AN Driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & the baudrate to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_a088528be8aa07bb9da708627ed493953}{}\label{_c_a_n_drv_8cpp_a088528be8aa07bb9da708627ed493953} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt@{C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt}}
+\index{C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt@{C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt()}{CANDrv\_Set\_bt()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+Set\+\_\+bt (\begin{DoxyParamCaption}\item[{\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate}}]{baudrate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set the Timing Parameters for the C\+AN. 
+
+the Values of the Registers C\+A\+N\+B\+T1-\/3 are also defined in this file.~\newline
+~\newline
+ !\+O\+N\+LY U\+S\+ED I\+N\+T\+E\+R\+N\+A\+L\+L\+Y! 
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & the baudrate to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8cpp_aff687219e44869233e1a2c0f6ee9e636}{}\label{_c_a_n_drv_8cpp_aff687219e44869233e1a2c0f6ee9e636} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!C\+L\+E\+A\+R\+\_\+\+R\+X\+OK@{C\+L\+E\+A\+R\+\_\+\+R\+X\+OK}}
+\index{C\+L\+E\+A\+R\+\_\+\+R\+X\+OK@{C\+L\+E\+A\+R\+\_\+\+R\+X\+OK}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{C\+L\+E\+A\+R\+\_\+\+R\+X\+O\+K()}{CLEAR\_RXOK()}}
+{\footnotesize\ttfamily void C\+L\+E\+A\+R\+\_\+\+R\+X\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clears the interrupt F\+L\+AG. 
+
+\hypertarget{_c_a_n_drv_8cpp_ac76ff81e2885d6ad3c4cdefe970d9c5d}{}\label{_c_a_n_drv_8cpp_ac76ff81e2885d6ad3c4cdefe970d9c5d} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!get\+M\+O\+Bsetup@{get\+M\+O\+Bsetup}}
+\index{get\+M\+O\+Bsetup@{get\+M\+O\+Bsetup}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{get\+M\+O\+Bsetup()}{getMOBsetup()}}
+{\footnotesize\ttfamily void get\+M\+O\+Bsetup (\begin{DoxyParamCaption}\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms }\end{DoxyParamCaption})}
+
+
+
+advanced Function not needed for normal operation 
+
+This function reads the Settings from the currently selected M\+OB. To select a M\+OB see \hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & pointer to the M\+OB settings \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8cpp_a4ddfcdee41507a0f9e59916a20c65c96}{}\label{_c_a_n_drv_8cpp_a4ddfcdee41507a0f9e59916a20c65c96} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!I\+SR@{I\+SR}}
+\index{I\+SR@{I\+SR}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{I\+S\+R()}{ISR()}}
+{\footnotesize\ttfamily I\+SR (\begin{DoxyParamCaption}\item[{C\+A\+N\+\_\+\+I\+N\+T\+\_\+vect}]{ }\end{DoxyParamCaption})}
+
+\hypertarget{_c_a_n_drv_8cpp_a51aea225137a118f781aa08cb154d3d9}{}\label{_c_a_n_drv_8cpp_a51aea225137a118f781aa08cb154d3d9} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!receive\+Data\+\_\+generic@{receive\+Data\+\_\+generic}}
+\index{receive\+Data\+\_\+generic@{receive\+Data\+\_\+generic}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{receive\+Data\+\_\+generic()}{receiveData\_generic()}}
+{\footnotesize\ttfamily receive\+Data\+\_\+generic (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mob\+\_\+\+NR }\end{DoxyParamCaption})}
+
+
+
+generic Receive funtion for an Interrupt Driven M\+OB. 
+
+This function only receives this Message once! 
+\begin{DoxyParams}{Parameters}
+{\em mob\+\_\+\+NR} & the M\+OB Number given by the I\+SR \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8cpp_a9cfd04f5fd0202403aed6b9a33e99d5e}{}\label{_c_a_n_drv_8cpp_a9cfd04f5fd0202403aed6b9a33e99d5e} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!receive\+Data\+\_\+generic\+\_\+restart@{receive\+Data\+\_\+generic\+\_\+restart}}
+\index{receive\+Data\+\_\+generic\+\_\+restart@{receive\+Data\+\_\+generic\+\_\+restart}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{receive\+Data\+\_\+generic\+\_\+restart()}{receiveData\_generic\_restart()}}
+{\footnotesize\ttfamily receive\+Data\+\_\+generic\+\_\+restart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mob\+\_\+\+NR }\end{DoxyParamCaption})}
+
+
+
+generic Receive funtion for an Interrupt Driven M\+OB. 
+
+This function will activate the Interrupt again. 
+\begin{DoxyParams}{Parameters}
+{\em mob\+\_\+\+NR} & the M\+OB Number given by the I\+SR \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8cpp_a1f8b9cb3232c9054776d20516ff469f8}{}\label{_c_a_n_drv_8cpp_a1f8b9cb3232c9054776d20516ff469f8} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!setup\+M\+OB@{setup\+M\+OB}}
+\index{setup\+M\+OB@{setup\+M\+OB}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{setup\+M\+O\+B()}{setupMOB()}}
+{\footnotesize\ttfamily setup\+M\+OB (\begin{DoxyParamCaption}\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms }\end{DoxyParamCaption})}
+
+
+
+advanced Function not needed for normal operation 
+
+This function writes the given Settings to the currently selected M\+OB. To select a M\+OB see \hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & pointer to the M\+OB settings \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_c_a_n_drv_8cpp_abf64082dbc5fd12cea9a5a62b9cae014}{}\label{_c_a_n_drv_8cpp_abf64082dbc5fd12cea9a5a62b9cae014} 
+\index{C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}!\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config@{\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config}}
+\index{\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config@{\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config}!C\+A\+N\+Drv.\+cpp@{C\+A\+N\+Drv.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config}{\_\_internal\_CAN\_Config}}
+{\footnotesize\ttfamily \hyperlink{struct_mob_config_element}{Mob\+Config\+Element}$\ast$ \+\_\+\+\_\+internal\+\_\+\+C\+A\+N\+\_\+\+Config}
+

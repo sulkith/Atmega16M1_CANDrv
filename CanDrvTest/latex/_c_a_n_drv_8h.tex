@@ -1,0 +1,347 @@
+\hypertarget{_c_a_n_drv_8h}{}\section{C\+A\+N\+Drv.\+h File Reference}
+\label{_c_a_n_drv_8h}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+
+
+C\+A\+N\+Drv header File.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmob__settings}{mob\+\_\+settings}
+\begin{DoxyCompactList}\small\item\em Settings for a M\+OB. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_mob_config_element}{Mob\+Config\+Element}
+\begin{DoxyCompactList}\small\item\em configuration object for the F\+R\+M\+Man Settings \end{DoxyCompactList}\item 
+class \hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler}
+\begin{DoxyCompactList}\small\item\em Class for safe handling of the C\+A\+N\+P\+A\+GE register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate} \{ \hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59ae553ec46a12968b619c3fcb9b682ed58}{C\+A\+N\+\_\+500k}, 
+\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59aab01c96a69956e2f8b0196e76822f6c4}{C\+A\+N\+\_\+800k}
+ \}\begin{DoxyCompactList}\small\item\em Baudrate Enumerator for the Baudrate. \end{DoxyCompactList}
+\item 
+enum \hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b}{mob\+\_\+operation} \{ \hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba8d76e3a0585a9b86c4df3f85bfda7621}{T\+X\+\_\+\+D\+A\+TA} = 0x01, 
+\hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba6414831417686ec76fdb53575bf64a7a}{R\+X\+\_\+\+D\+A\+TA} = 0x02, 
+\hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba40f39385238042f6ec0cbac821a19fc4}{D\+I\+S\+A\+B\+L\+ED} = 0x00
+ \}\begin{DoxyCompactList}\small\item\em M\+OB Operation Enumerator for the operation while manually using a M\+OB. \end{DoxyCompactList}
+\item 
+enum \hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7}{mob\+\_\+purpose} \{ \newline
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a919a500140d106137d774027efced018}{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN} = 0x10, 
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a9246027477a3bac0486b4fa4952b481a}{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN} = 0x20, 
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a525b167206f302275df0fa86abf96167}{M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE} = 0x30, 
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN} = 0x62, 
+\newline
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a5ba8ef15101ff3271079a384361534b3}{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE} = 0x60, 
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a00a546de5af5196186bce76df0a3ef35}{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE} = 0x50, 
+\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{U\+N\+U\+S\+ED} = 0x00
+ \}\begin{DoxyCompactList}\small\item\em M\+OB Purpose Enumerator for the Purpose of the M\+OB when configuring the F\+R\+M\+Man. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8h_a360efc7188ee6016bf9ac670fcdee966}{C\+A\+N\+Drv\+\_\+\+Init} (\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate} baudrate)
+\begin{DoxyCompactList}\small\item\em Initialize the C\+AN Driver. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8h_adcc89ff122fc9aeade4fcd9eae3781b9}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg} (uint8\+\_\+t index, \hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms)
+\begin{DoxyCompactList}\small\item\em get a received Can Message. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8h_a809dfcdd501933543e711368b12a6f95}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg} (uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em sends a configured Message \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_c_a_n_drv_8h_afe8289e8307055bb1daf2362897b0280}{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init} (\hyperlink{struct_mob_config_element}{Mob\+Config\+Element} $\ast$C\+A\+N\+\_\+\+Config)
+\begin{DoxyCompactList}\small\item\em Initialize the F\+R\+M\+Man. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8h_a3fcf063924f8040c68edec4fcda5de0e}{receive\+Data\+\_\+generic} (uint8\+\_\+t mob\+\_\+\+NR)
+\begin{DoxyCompactList}\small\item\em generic Receive funtion for an Interrupt Driven M\+OB. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8h_abc69b121ce10b52ca9d90130f94d579c}{receive\+Data\+\_\+generic\+\_\+restart} (uint8\+\_\+t mob\+\_\+\+NR)
+\begin{DoxyCompactList}\small\item\em generic Receive funtion for an Interrupt Driven M\+OB. \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8h_a80f144dc23b53a87c5a3735c47fa212e}{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB} (void)
+\begin{DoxyCompactList}\small\item\em advanced Function not needed for normal operation \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8h_ac76ff81e2885d6ad3c4cdefe970d9c5d}{get\+M\+O\+Bsetup} (\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$ms)
+\begin{DoxyCompactList}\small\item\em advanced Function not needed for normal operation \end{DoxyCompactList}\item 
+void \hyperlink{_c_a_n_drv_8h_aecf099a77481770017317b1469f42a3c}{set\+M\+O\+B\+\_\+\+Operation} (\hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b}{mob\+\_\+operation} mo)
+\begin{DoxyCompactList}\small\item\em set the Operation of the current M\+OB \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\+A\+N\+Drv header File. 
+
+This File describes the Interface of the C\+A\+N\+Drv and the F\+R\+M\+Man 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{}\label{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!Can\+Baudrate@{Can\+Baudrate}}
+\index{Can\+Baudrate@{Can\+Baudrate}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{Can\+Baudrate}{CanBaudrate}}
+{\footnotesize\ttfamily enum \hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate}}
+
+
+
+Baudrate Enumerator for the Baudrate. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+A\+N\+\_\+500k@{C\+A\+N\+\_\+500k}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+\_\+500k@{C\+A\+N\+\_\+500k}}}\hypertarget{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59ae553ec46a12968b619c3fcb9b682ed58}{}\label{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59ae553ec46a12968b619c3fcb9b682ed58} 
+C\+A\+N\+\_\+500k&500 Kbaud \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+A\+N\+\_\+800k@{C\+A\+N\+\_\+800k}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+\_\+800k@{C\+A\+N\+\_\+800k}}}\hypertarget{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59aab01c96a69956e2f8b0196e76822f6c4}{}\label{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59aab01c96a69956e2f8b0196e76822f6c4} 
+C\+A\+N\+\_\+800k&800 Kbaud \\
+\hline
+
+\end{DoxyEnumFields}
+\hypertarget{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b}{}\label{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!mob\+\_\+operation@{mob\+\_\+operation}}
+\index{mob\+\_\+operation@{mob\+\_\+operation}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{mob\+\_\+operation}{mob\_operation}}
+{\footnotesize\ttfamily enum \hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b}{mob\+\_\+operation}}
+
+
+
+M\+OB Operation Enumerator for the operation while manually using a M\+OB. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+X\+\_\+\+D\+A\+TA@{T\+X\+\_\+\+D\+A\+TA}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!T\+X\+\_\+\+D\+A\+TA@{T\+X\+\_\+\+D\+A\+TA}}}\hypertarget{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba8d76e3a0585a9b86c4df3f85bfda7621}{}\label{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba8d76e3a0585a9b86c4df3f85bfda7621} 
+T\+X\+\_\+\+D\+A\+TA&Transmit D\+A\+TA \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+X\+\_\+\+D\+A\+TA@{R\+X\+\_\+\+D\+A\+TA}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!R\+X\+\_\+\+D\+A\+TA@{R\+X\+\_\+\+D\+A\+TA}}}\hypertarget{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba6414831417686ec76fdb53575bf64a7a}{}\label{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba6414831417686ec76fdb53575bf64a7a} 
+R\+X\+\_\+\+D\+A\+TA&Receive D\+A\+TA \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+S\+A\+B\+L\+ED@{D\+I\+S\+A\+B\+L\+ED}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!D\+I\+S\+A\+B\+L\+ED@{D\+I\+S\+A\+B\+L\+ED}}}\hypertarget{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba40f39385238042f6ec0cbac821a19fc4}{}\label{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1ba40f39385238042f6ec0cbac821a19fc4} 
+D\+I\+S\+A\+B\+L\+ED&D\+I\+S\+A\+B\+L\+ED \\
+\hline
+
+\end{DoxyEnumFields}
+\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!mob\+\_\+purpose@{mob\+\_\+purpose}}
+\index{mob\+\_\+purpose@{mob\+\_\+purpose}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{mob\+\_\+purpose}{mob\_purpose}}
+{\footnotesize\ttfamily enum \hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7}{mob\+\_\+purpose}}
+
+
+
+M\+OB Purpose Enumerator for the Purpose of the M\+OB when configuring the F\+R\+M\+Man. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN@{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN@{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a919a500140d106137d774027efced018}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a919a500140d106137d774027efced018} 
+T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN&TX triggered by SW \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a9246027477a3bac0486b4fa4952b481a}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a9246027477a3bac0486b4fa4952b481a} 
+R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+S\+W\+\_\+\+D\+R\+I\+V\+EN&RX triggered by SW \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE@{M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE@{M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a525b167206f302275df0fa86abf96167}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a525b167206f302275df0fa86abf96167} 
+M\+U\+L\+T\+I\+P\+U\+R\+P\+O\+SE&RX and TX triggered by SW \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18} 
+R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+EN&RX triggered by Interrupt. Automatically activated at Startup \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE@{R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a5ba8ef15101ff3271079a384361534b3}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a5ba8ef15101ff3271079a384361534b3} 
+R\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+D\+R\+I\+V\+E\+N\+\_\+\+I\+N\+A\+C\+T\+I\+VE&RX triggered by Interrupt. Automatically deactivated at Startup \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE@{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE@{T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a00a546de5af5196186bce76df0a3ef35}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a00a546de5af5196186bce76df0a3ef35} 
+T\+X\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+A\+C\+T\+I\+VE&TX triggered by SW. Will cause an Interrupt on completion \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+U\+S\+ED@{U\+N\+U\+S\+ED}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!U\+N\+U\+S\+ED@{U\+N\+U\+S\+ED}}}\hypertarget{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{}\label{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4} 
+U\+N\+U\+S\+ED&M\+OB is unused \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\hypertarget{_c_a_n_drv_8h_a80f144dc23b53a87c5a3735c47fa212e}{}\label{_c_a_n_drv_8h_a80f144dc23b53a87c5a3735c47fa212e} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB@{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB}}
+\index{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB@{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+O\+B()}{CANDrv\_ClearAll\_MOB()}}
+{\footnotesize\ttfamily void C\+A\+N\+Drv\+\_\+\+Clear\+All\+\_\+\+M\+OB (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+advanced Function not needed for normal operation 
+
+This function clear all M\+OB registers. This is used in I\+NI. \hypertarget{_c_a_n_drv_8h_adcc89ff122fc9aeade4fcd9eae3781b9}{}\label{_c_a_n_drv_8h_adcc89ff122fc9aeade4fcd9eae3781b9} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg()}{CANDrv\_FRMMan\_Get\_Msg()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Get\+\_\+\+Msg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms }\end{DoxyParamCaption})}
+
+
+
+get a received Can Message. 
+
+This function reads a received Can Message from the internal Buffer.~\newline
+ It also retries to read if there were any Changes, because of an Interrupt, receiving a new Message.~\newline
+ In this case the read operation is retried.~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the mob to read \\
+\hline
+{\em ms} & O\+U\+T\+P\+UT Pointer to a message settings object, where the data is written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8h_afe8289e8307055bb1daf2362897b0280}{}\label{_c_a_n_drv_8h_afe8289e8307055bb1daf2362897b0280} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init()}{CANDrv\_FRMMan\_Init()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{struct_mob_config_element}{Mob\+Config\+Element} $\ast$}]{C\+A\+N\+\_\+\+Config }\end{DoxyParamCaption})}
+
+
+
+Initialize the F\+R\+M\+Man. 
+
+This function initializes the F\+R\+M\+Man with the given C\+A\+N\+\_\+\+Config.~\newline
+~\newline
+ Example configuration\+: 
+\begin{DoxyCode}
+  \textcolor{comment}{//Make sure all these variables are global an not in a scoped context, like a funtion.}
+  uint8\_t data\_130[8];
+  uint8\_t data\_7e8[8];
+  uint8\_t data\_7e0[8];
+  \hyperlink{struct_mob_config_element}{MobConfigElement} CAN\_Config[] =
+  \{
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7a919a500140d106137d774027efced018}{TX\_DATA\_SW\_DRIVEN},\{0x7e0,0x000,0,8,(uint8\_t*)&data\_7e0\}\},\textcolor{comment}{//This Messsage can be sent
+       with CANDrv\_FRMMan\_Send\_Msg(0);}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{RX\_DATA\_INTERRUPT\_DRIVEN},\{0x130,0x3FF,0,8,(uint8\_t*)&data\_130\},&
+      \hyperlink{_c_a_n_drv_8cpp_a9cfd04f5fd0202403aed6b9a33e99d5e}{receiveData\_generic\_restart},0,0\},\textcolor{comment}{//This Message will be received with an
+       Interrupt. It will be directly enabled again}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7ad33278e519489212e10a989c5f03eb18}{RX\_DATA\_INTERRUPT\_DRIVEN},\{0x7e8,0x3FF,0,8,(uint8\_t*)&data\_7e8\},&
+      \hyperlink{_c_a_n_drv_8cpp_a51aea225137a118f781aa08cb154d3d9}{receiveData\_generic},0,0\},\textcolor{comment}{//This Message will be received with an Interrupt. It will be
+       only received once!}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\},\textcolor{comment}{//unused MOBs}
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\},
+    \{\hyperlink{_c_a_n_drv_8h_a96ec3cdb380b685d106b8ce4ff42eaf7aa09b651ef326a9d8efcee5cc5b720ab4}{UNUSED}\}
+  \};
+  
+  \textcolor{keywordtype}{void} setup() \{
+  data\_7e0[0] = 0x02; \textcolor{comment}{//Initialize the Message to send.}
+  data\_7e0[1] = 0x01; 
+  data\_7e0[2] = 0x05; 
+  data\_7e0[3] = 0x33;
+  data\_7e0[4] = 0x44;
+  data\_7e0[5] = 0x55;
+  data\_7e0[6] = 0x66;
+  data\_7e0[7] = 0x77;
+  \hyperlink{_c_a_n_drv_8cpp_a360efc7188ee6016bf9ac670fcdee966}{CANDrv\_Init}(\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59ae553ec46a12968b619c3fcb9b682ed58}{CAN\_500k}); \textcolor{comment}{//init CANDrv}
+  \hyperlink{_c_a_n_drv_8cpp_a07b2b0f274992196ab34c995f3e5b7d7}{CANDrv\_FRMMan\_Init}(CAN\_Config);\textcolor{comment}{//init FRMMan}
+  sei();\textcolor{comment}{//enable interrupts. This is neccessary for the Interrupt driven receives}
+\}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+A\+N\+\_\+\+Config} & The C\+A\+N\+\_\+\+Config to use. For examples see funtion description. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8h_a809dfcdd501933543e711368b12a6f95}{}\label{_c_a_n_drv_8h_a809dfcdd501933543e711368b12a6f95} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg}}
+\index{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg@{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg()}{CANDrv\_FRMMan\_Send\_Msg()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+F\+R\+M\+Man\+\_\+\+Send\+\_\+\+Msg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+sends a configured Message 
+
+This function sends a predefined Message. 
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the Message to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8h_a360efc7188ee6016bf9ac670fcdee966}{}\label{_c_a_n_drv_8h_a360efc7188ee6016bf9ac670fcdee966} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!C\+A\+N\+Drv\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+Init}}
+\index{C\+A\+N\+Drv\+\_\+\+Init@{C\+A\+N\+Drv\+\_\+\+Init}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{C\+A\+N\+Drv\+\_\+\+Init()}{CANDrv\_Init()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+N\+Drv\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{_c_a_n_drv_8h_a62a1372b9005d5554848475ab520ea59}{Can\+Baudrate}}]{baudrate }\end{DoxyParamCaption})}
+
+
+
+Initialize the C\+AN Driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & the baudrate to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success. 0 in case of an error. 
+\end{DoxyReturn}
+\hypertarget{_c_a_n_drv_8h_ac76ff81e2885d6ad3c4cdefe970d9c5d}{}\label{_c_a_n_drv_8h_ac76ff81e2885d6ad3c4cdefe970d9c5d} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!get\+M\+O\+Bsetup@{get\+M\+O\+Bsetup}}
+\index{get\+M\+O\+Bsetup@{get\+M\+O\+Bsetup}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{get\+M\+O\+Bsetup()}{getMOBsetup()}}
+{\footnotesize\ttfamily void get\+M\+O\+Bsetup (\begin{DoxyParamCaption}\item[{\hyperlink{structmob__settings}{mob\+\_\+settings} $\ast$}]{ms }\end{DoxyParamCaption})}
+
+
+
+advanced Function not needed for normal operation 
+
+This function reads the Settings from the currently selected M\+OB. To select a M\+OB see \hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & pointer to the M\+OB settings \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8h_a3fcf063924f8040c68edec4fcda5de0e}{}\label{_c_a_n_drv_8h_a3fcf063924f8040c68edec4fcda5de0e} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!receive\+Data\+\_\+generic@{receive\+Data\+\_\+generic}}
+\index{receive\+Data\+\_\+generic@{receive\+Data\+\_\+generic}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{receive\+Data\+\_\+generic()}{receiveData\_generic()}}
+{\footnotesize\ttfamily void receive\+Data\+\_\+generic (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mob\+\_\+\+NR }\end{DoxyParamCaption})}
+
+
+
+generic Receive funtion for an Interrupt Driven M\+OB. 
+
+This function only receives this Message once! 
+\begin{DoxyParams}{Parameters}
+{\em mob\+\_\+\+NR} & the M\+OB Number given by the I\+SR \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8h_abc69b121ce10b52ca9d90130f94d579c}{}\label{_c_a_n_drv_8h_abc69b121ce10b52ca9d90130f94d579c} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!receive\+Data\+\_\+generic\+\_\+restart@{receive\+Data\+\_\+generic\+\_\+restart}}
+\index{receive\+Data\+\_\+generic\+\_\+restart@{receive\+Data\+\_\+generic\+\_\+restart}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{receive\+Data\+\_\+generic\+\_\+restart()}{receiveData\_generic\_restart()}}
+{\footnotesize\ttfamily void receive\+Data\+\_\+generic\+\_\+restart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mob\+\_\+\+NR }\end{DoxyParamCaption})}
+
+
+
+generic Receive funtion for an Interrupt Driven M\+OB. 
+
+This function will activate the Interrupt again. 
+\begin{DoxyParams}{Parameters}
+{\em mob\+\_\+\+NR} & the M\+OB Number given by the I\+SR \\
+\hline
+\end{DoxyParams}
+\hypertarget{_c_a_n_drv_8h_aecf099a77481770017317b1469f42a3c}{}\label{_c_a_n_drv_8h_aecf099a77481770017317b1469f42a3c} 
+\index{C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}!set\+M\+O\+B\+\_\+\+Operation@{set\+M\+O\+B\+\_\+\+Operation}}
+\index{set\+M\+O\+B\+\_\+\+Operation@{set\+M\+O\+B\+\_\+\+Operation}!C\+A\+N\+Drv.\+h@{C\+A\+N\+Drv.\+h}}
+\subsubsection{\texorpdfstring{set\+M\+O\+B\+\_\+\+Operation()}{setMOB\_Operation()}}
+{\footnotesize\ttfamily set\+M\+O\+B\+\_\+\+Operation (\begin{DoxyParamCaption}\item[{\hyperlink{_c_a_n_drv_8h_a8eb8b1a8e0118012f7b73b9f1f2d0f1b}{mob\+\_\+operation}}]{mo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set the Operation of the current M\+OB 
+
+This function sets the Operation of the currently selected M\+OB To select a M\+OB see \hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_a_n_p_a_g_e_handler}{C\+A\+N\+P\+A\+G\+E\+Handler} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em mo} & the operation mode to set the M\+OB to \\
+\hline
+\end{DoxyParams}
