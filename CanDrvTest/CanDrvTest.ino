@@ -1,11 +1,17 @@
 #include <avr/io.h>
 #include "CANDrv.h"
+#include "MessageValidator.h"
+
 #define MIN(x,y)((x<y)?x:y)
 
 
 uint8_t ledstate = 1;
 
 void testReceiveMessage();
+
+uint8_t T15_st;
+MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
+
 
 uint8_t data_130[8];
 uint8_t data_7e8[8];
@@ -14,17 +20,17 @@ void receiveData_generic(int mob_NR);
 MobConfigElement CAN_Config[] =
 {
   {TX_DATA_SW_DRIVEN,{0x7e0,0x000,0,8,(uint8_t*)&data_7e0}},
-  {RX_DATA_INTERRUPT_DRIVEN,{0x130,0x3FF,0,8,(uint8_t*)&data_130},&receiveData_generic_restart_toggleLED,0,0},
+  {RX_DATA_INTERRUPT_DRIVEN,{0x130,0x3FF,0,8,(uint8_t*)&data_130},&receiveData_generic_restart_130,0,0},
   {RX_DATA_INTERRUPT_DRIVEN,{0x7e8,0x3FF,0,8,(uint8_t*)&data_7e8},&receiveData_generic_restart,0,0},
   {UNUSED},
   {UNUSED},
   {UNUSED}
 };
-void receiveData_generic_restart_toggleLED(uint8_t mob_NR)
+void receiveData_generic_restart_130(uint8_t mob_NR)
 {
   receiveData_generic_restart(mob_NR);
-  ledstate++;
-  digitalWrite(14, (ledstate%2)>0);
+  T15_validator.set((data_130[0]&0x04)>>2);
+  setMOB_Operation(RX_DATA);
 }
 void setup() {
   data_7e0[0] = 0x02; //additional Data Bytes
@@ -70,5 +76,6 @@ void loop() {
   uint8_t buffer[8];
   ms.data = (uint8_t*)&buffer;
   CANDrv_FRMMan_Get_Msg(2,&ms);
+  digitalWrite(14, (T15_validator.get())>0);
   
 }
