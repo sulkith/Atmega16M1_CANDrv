@@ -22,7 +22,8 @@ class MessageValidator
     {
       currentValue = replacementValue;  
     }  
-    *dst_ptr=currentValue;
+    if(dst_ptr != 0)
+      *dst_ptr=currentValue;
   }
   T get()
   {
