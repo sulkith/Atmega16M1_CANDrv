@@ -8,32 +8,6 @@
 
 #define MIN(x,y)((x<y)?x:y)
 
-
-#define cs   18
-#define dc   8
-#define rst  12
-#define bl xx
-
-/*
- * Pinning
- * [1] RST     15
- *  2  CS      24
- *  3  D/C     11
- *  4  MOSI    9
- *  5  CLK     28
- *  6  VCC     5V
- *  7  BL      R -> 5V
- *  8  GND     GND
- *
- */
-
-TFT TFTscreen = TFT(cs, dc, rst);
-
-
-uint8_t ledstate = 1;
-
-void testReceiveMessage();
-
 uint8_t T15_st;
 MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
 MessageValidator<uint8_t> StandbyOn_validator(1000,0,0);

@@ -1,42 +1,30 @@
 
+#define cs   18
+#define dc   8
+#define rst  12
+#define bl xx
+
+/*
+ * Pinning
+ * [1] RST     15
+ *  2  CS      24
+ *  3  D/C     11
+ *  4  MOSI    9
+ *  5  CLK     28
+ *  6  VCC     5V
+ *  7  BL      R -> 5V
+ *  8  GND     GND
+ *
+ */
+
+TFT TFTscreen = TFT(cs, dc, rst);
+
 void Display_Init_StaticText();
 
 void Display_Init()
 {
-
-  //DDR_SPI = (1<<DD_MOSI)|(1<<DD_SCK);
-  pinMode(6, OUTPUT);
-  pinMode(22, OUTPUT);
-
   TFTscreen.begin();
-  pinMode(6, OUTPUT);
-  pinMode(22, OUTPUT);
   Display_Init_StaticText();
-
-  // ste the font size very large for the loop
-  TFTscreen.setTextSize(5);
-
-}
-
-void convertIntToString(char* txt, uint8_t length, int16_t number)
-{
-  uint16_t currentStage = 1;
-  if (number < 0)
-  {
-    length -= 1;
-    txt[0] = '-';
-    txt++;
-  }
-  for (int i = 0; i < length; ++i)
-  {
-    currentStage *= 10;
-  }
-  for (int i = 0; i < length ; ++i)
-  {
-    uint8_t numberInCurrentStage = (number % currentStage) / (currentStage / 10);
-    txt[i] = 30 + numberInCurrentStage;
-
-  }
 }
 inline uint8_t tmot_to_x(int16_t tmot)
 {
@@ -189,56 +177,5 @@ void Display_cyclic()
 {
   Display_show_tmot();
   Display_show_Powerstat();
-/*  TFTscreen.line(0,128,128,128);
-
-  uint8_t circlearray[] = {128,128,128,128,128,128,128,128,128,128,128,127,127,127,127,127,127,127,127,126,126,126,126,126,126,125,125,125,125,124,124,124,124,123,123,123,123,122,122,122,121,121,121,120,
-120,119,119,119,118,118,117,117,117,116,116,115,115,114,114,113,113,112,111,111,110,110,109,108,108,107,107,106,105,104,104,103,102,101,101,100,99,98,97,97,96,95,94,93,92,91,90,
-89,88,87,86,85,84,82,81,80,79,77,76,75,73,72,70,69,67,65,64,62,60,58,56,54,52,50,47,45,42,39,35,32,28,23,16,0};
-
-for(uint8_t i = 1;i<128;++i)
-{
-    TFTscreen.line(i-1,128-circlearray[128-(i-1)],i,128-circlearray[128-i]);
-}
-delay(500);
-for(uint8_t i = 1;i<128;++i)
-{
-  TFTscreen.stroke(0, 0, 0);
-  TFTscreen.line(i-1,128-circlearray[128-(i-1)],128,128);
-  TFTscreen.stroke(255, 255, 255);
-  TFTscreen.line(i,128-circlearray[128-(i)],128,128);
-  
-  delay(10);
-}*/
-
-
-
-
-  
-/*
-  static char txtcode[] = "000";
-  TFTscreen.stroke(0, 0, 0);
-  TFTscreen.text(txtcode, 0, 60);
-  txtcode[0] = (0 / 100) + 0x30;
-  txtcode[1] = (0 % 100) / 10 + 0x30;
-  txtcode[2] = (0 % 10) + 0x30;
-  txtcode[3] = 0;
-
-  TFTscreen.stroke(255, 255, 255);
-  TFTscreen.text(txtcode, 0, 60);
-
-  static char PowerStat[] = "0000";
-  TFTscreen.setTextSize(2);
-  TFTscreen.stroke(0, 0, 0);
-  TFTscreen.text(PowerStat, 0, 100);
-  PowerStat[0] = (T15_validator.get()) ? '1' : '0';
-  PowerStat[1] = (StandbyOn_validator.get())?'1':'0';
-  PowerStat[2] = (KeyInLock_validator.get())?'1':'0';
-  //PowerStat[3] = (EngineStarting)?'1':'0';
-  PowerStat[4] = 0;
-  TFTscreen.stroke(255, 255, 255);
-  TFTscreen.text(PowerStat, 0, 100);
-  TFTscreen.setTextSize(5);*/
-
-
 }
 
