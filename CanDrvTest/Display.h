@@ -3,6 +3,7 @@
 #define dc   8
 #define rst  12
 #define bl xx
+#define DP_POWER_LS 15
 
 /*
  * Pinning
@@ -17,14 +18,41 @@
  *
  */
 
+#define COLOR_BG 0,0,0
+#define COLOR_FG 0,57,230
+#define COLOR_FG_COLD 255,0,0
+#define COLOR_FG_OK 0,255,0
+#define COLOR_FG_HOT 0,0,255
+
+#define COLOR_FG_COLD 0,128,255
+#define COLOR_FG_OK 0,128,249
+#define COLOR_FG_HOT 0,115,224
+
+
 TFT TFTscreen = TFT(cs, dc, rst);
 
 void Display_Init_StaticText();
 
 void Display_Init()
 {
+  pinMode(DP_POWER_LS, OUTPUT);
+  
+  //digitalWrite(DP_POWER_LS, LOW);//Deactivate Power to Display
+  //delay(50);
+  digitalWrite(DP_POWER_LS, HIGH);//Activate Power to Display
+  //delay(50);
   TFTscreen.begin();
   Display_Init_StaticText();
+}
+void Display_Shutdown()
+{
+  pinMode(rst, INPUT);
+  pinMode(dc, INPUT);
+  pinMode(cs, INPUT);
+  pinMode(MOSI, INPUT);
+  pinMode(SCK, INPUT);
+  //pinMode(bl, INPUT);
+  digitalWrite(DP_POWER_LS, LOW);//cut Power to the Display
 }
 inline uint8_t tmot_to_x(int16_t tmot)
 {
@@ -77,16 +105,16 @@ void Display_show_tmot()
     }
   }
 
-  TFTscreen.stroke(0, 0, 0);
+  TFTscreen.stroke(COLOR_BG);
   TFTscreen.text(tmot_mask, TMOT_pos_x, TMOT_pos_y);
-  TFTscreen.stroke(255, 255, 255);
+  TFTscreen.stroke(COLOR_FG);
   TFTscreen.text(tmot_txt, TMOT_pos_x, TMOT_pos_y);
   for (uint8_t i = 0; i < 3; ++i)
     tmot_old_txt[i] = tmot_txt[i];
   if(tmot_loc < 0)
   {
-    TFTscreen.fill(0,0,0);
-    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.fill(COLOR_BG);
+    TFTscreen.stroke(COLOR_BG);
     TFTscreen.rect(2,17,156,20);
   }
   else
@@ -94,22 +122,22 @@ void Display_show_tmot()
     uint8_t xpos = tmot_to_x(tmot_loc)-2;
     if(tmot_loc < 70)
     {
-      TFTscreen.stroke(255,0,0);
-      TFTscreen.fill(255,0,0);
+      TFTscreen.stroke(COLOR_FG_COLD);
+      TFTscreen.fill(COLOR_FG_COLD);
     }
     else if(tmot_loc < 110)
     {
-      TFTscreen.stroke(0,255,0);
-      TFTscreen.fill(0,255,0);
+      TFTscreen.stroke(COLOR_FG_OK);
+      TFTscreen.fill(COLOR_FG_OK);
     }
     else
     {
-      TFTscreen.stroke(0,0,255);
-      TFTscreen.fill(0,0,255);
+      TFTscreen.stroke(COLOR_FG_HOT);
+      TFTscreen.fill(COLOR_FG_HOT);
     }
     TFTscreen.rect(2,17,xpos,20);
-    TFTscreen.fill(0,0,0);
-    TFTscreen.stroke(0, 0, 0);
+    TFTscreen.fill(COLOR_BG);
+    TFTscreen.stroke(COLOR_BG);
     TFTscreen.rect(xpos+2,17,156-xpos,20);
   }
   
@@ -118,22 +146,22 @@ void Display_show_Powerstat()
 {
   static char PowerStat[] = "0000";
   TFTscreen.setTextSize(2);
-  TFTscreen.stroke(0, 0, 0);
+  TFTscreen.stroke(COLOR_BG);
   TFTscreen.text(PowerStat, 0, 100);
   PowerStat[0] = (T15_validator.get()) ? '1' : '0';
   PowerStat[1] = (StandbyOn_validator.get())?'1':'0';
   PowerStat[2] = (KeyInLock_validator.get())?'1':'0';
   //PowerStat[3] = (EngineStarting)?'1':'0';
   PowerStat[4] = 0;
-  TFTscreen.stroke(255, 255, 255);
+  TFTscreen.stroke(COLOR_FG);
   TFTscreen.text(PowerStat, 0, 100);
   TFTscreen.setTextSize(5);  
 }
 
 void Display_static_tmot()
 {
-    TFTscreen.stroke(255, 255, 255);
-  TFTscreen.fill(0,0,0);
+    TFTscreen.stroke(COLOR_FG);
+  TFTscreen.fill(COLOR_BG);
   TFTscreen.rect(0,15,160,24);
   //TFTscreen.fill(255,255,255);
   //TFTscreen.rect(2,17,100,20);
@@ -168,7 +196,7 @@ void Display_static_tmot()
 void Display_Init_StaticText()
 {
   // clear the screen with a black background
-  TFTscreen.background(0, 0, 0);
+  TFTscreen.background(COLOR_BG);
   TFTscreen.setRotation(1);
 
   Display_static_tmot();

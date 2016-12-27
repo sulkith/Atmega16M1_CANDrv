@@ -6,14 +6,17 @@
 #include "MessageValidator.h"
 
 
+
 #define MIN(x,y)((x<y)?x:y)
 
 uint8_t T15_st;
 MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
+MessageValidator<uint8_t> KeepRunning(10000,0,0);
 MessageValidator<uint8_t> StandbyOn_validator(1000,0,0);
 MessageValidator<uint8_t> KeyInLock_validator(1000,0,0);
 MessageValidator<int16_t> tmot_validator(1000,-100,0);
 #include "Display.h"
+#include "ShutdownController.h"
 
 uint8_t data_130[8];
 uint8_t data_7e8[8];
@@ -46,7 +49,11 @@ void receiveData_restart_7e8(uint8_t mob_NR)
     }
   }
 }
+ISR(INT3_vect)
+{
+}
 void setup() {
+  
   data_7e0[0] = 0x02; //additional Data Bytes
   data_7e0[1] = 0x01; //Show Current Data
   data_7e0[2] = 0x05; //Engine Coolant Temperature
@@ -60,6 +67,8 @@ void setup() {
   pinMode(14, OUTPUT);
   digitalWrite(14, HIGH);
   Display_Init();
+  delay(100);
+  ShutdownController_Init();
   sei();
   
 }
@@ -95,5 +104,6 @@ void loop() {
   digitalWrite(14, (T15_validator.get())>0);
   tmot_validator.update();
   Display_cyclic();
+  ShutdownController_cyclic();
   
 }
