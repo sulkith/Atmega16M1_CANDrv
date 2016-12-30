@@ -19,14 +19,10 @@
  */
 
 #define COLOR_BG 0,0,0
-#define COLOR_FG 0,57,230
+#define COLOR_FG 0,70,255
 #define COLOR_FG_COLD 255,0,0
 #define COLOR_FG_OK 0,255,0
 #define COLOR_FG_HOT 0,0,255
-
-#define COLOR_FG_COLD 0,128,255
-#define COLOR_FG_OK 0,128,249
-#define COLOR_FG_HOT 0,115,224
 
 
 TFT TFTscreen = TFT(cs, dc, rst);
