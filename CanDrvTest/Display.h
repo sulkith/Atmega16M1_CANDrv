@@ -1,22 +1,6 @@
+#include "pinning.h"
 
-#define cs   18
-#define dc   8
-#define rst  12
-#define bl xx
-#define DP_POWER_LS 15
 
-/*
- * Pinning
- * [1] RST     15
- *  2  CS      24
- *  3  D/C     11
- *  4  MOSI    9
- *  5  CLK     28
- *  6  VCC     5V
- *  7  BL      R -> 5V
- *  8  GND     GND
- *
- */
 
 #define COLOR_BG 0,0,0
 #define COLOR_FG 0,70,255
@@ -25,30 +9,40 @@
 #define COLOR_FG_HOT 0,0,255
 
 
-TFT TFTscreen = TFT(cs, dc, rst);
+TFT TFTscreen = TFT(DISPLAY_CS, DISPLAY_DC, DISPLAY_RST);
 
 void Display_Init_StaticText();
 
 void Display_Init()
 {
-  pinMode(DP_POWER_LS, OUTPUT);
+  pinMode(DISPLAY_POWER_LS, OUTPUT);
+  pinMode(DISPLAY_BL, OUTPUT);
   
   //digitalWrite(DP_POWER_LS, LOW);//Deactivate Power to Display
   //delay(50);
-  digitalWrite(DP_POWER_LS, HIGH);//Activate Power to Display
+  digitalWrite(DISPLAY_POWER_LS, HIGH);//Activate Power to Display
   //delay(50);
   TFTscreen.begin();
   Display_Init_StaticText();
+  digitalWrite(DISPLAY_BL, HIGH);
 }
 void Display_Shutdown()
 {
-  pinMode(rst, INPUT);
-  pinMode(dc, INPUT);
-  pinMode(cs, INPUT);
-  pinMode(MOSI, INPUT);
-  pinMode(SCK, INPUT);
-  //pinMode(bl, INPUT);
-  digitalWrite(DP_POWER_LS, LOW);//cut Power to the Display
+  pinMode(DISPLAY_RST, INPUT);
+  pinMode(DISPLAY_DC, INPUT);
+  pinMode(DISPLAY_CS, INPUT);
+  pinMode(DISPLAY_MOSI, INPUT);
+  pinMode(DISPLAY_SCK, INPUT);
+  pinMode(DISPLAY_BL, INPUT);
+  digitalWrite(DISPLAY_POWER_LS, LOW);//cut Power to the Display
+}
+void Display_Powersave(bool powersave)
+{
+  //if(powersave)
+    //digitalWrite(DISPLAY_BL, LOW);//cut Power to the Backlight
+  //else
+  //  digitalWrite(DISPLAY_BL, HIGH);//enable Power to the Backlight
+    
 }
 inline uint8_t tmot_to_x(int16_t tmot)
 {
