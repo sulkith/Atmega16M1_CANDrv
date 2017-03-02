@@ -10,6 +10,7 @@
 #define MIN(x,y)((x<y)?x:y)
 
 uint8_t T15_st;
+MessageValidator<uint8_t> CAN_Active(1000,0,0);
 MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
 MessageValidator<uint8_t> KeepRunning(10000,0,0);
 MessageValidator<uint8_t> StandbyOn_validator(1000,0,0);
@@ -37,6 +38,7 @@ void receiveData_restart_130(uint8_t mob_NR)
   T15_validator.set((data_130[0]&0x04)>>2);
   StandbyOn_validator.set((data_130[0] & 0x01));
   KeyInLock_validator.set((data_130[1] & 0x40) >> 6);
+  CAN_Active.set(1);
 }
 void receiveData_restart_7e8(uint8_t mob_NR)
 {
@@ -48,6 +50,7 @@ void receiveData_restart_7e8(uint8_t mob_NR)
       tmot_validator.set(data_7e8[3] - 40);
     }
   }
+  CAN_Active.set(1);
 }
 ISR(INT3_vect)
 {
@@ -64,8 +67,6 @@ void setup() {
   data_7e0[7] = 0x77;
   CANDrv_Init(CAN_500k); //init CAN
   CANDrv_FRMMan_Init(CAN_Config);
-  pinMode(14, OUTPUT);
-  digitalWrite(14, HIGH);
   Display_Init();
   delay(100);
   ShutdownController_Init();
@@ -101,7 +102,6 @@ void loop() {
   uint8_t buffer[8];
   ms.data = (uint8_t*)&buffer;
   CANDrv_FRMMan_Get_Msg(2,&ms);
-  digitalWrite(14, (T15_validator.get())>0);
   tmot_validator.update();
   Display_cyclic();
   ShutdownController_cyclic();

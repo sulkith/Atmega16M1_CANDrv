@@ -1,8 +1,19 @@
+#include "pinning.h"
+
+#define DISABLE_SHUTDOWN 1
+
 uint8_t SCState = 0;
+#define SHUTDOWN_STATE_BOOT_UP 0
+#define SHUTDOWN_STATE_NORMAL_OPERATION 1
+#define SHUTDOWN_STATE_T15_OFF 2
 void ShutdownController_Init()
 {
   //pinMode(24, INPUT);
   //KeepRunning.set(1);
+  pinMode(CAN_STB, OUTPUT);
+  digitalWrite(CAN_STB, LOW);
+  pinMode(SHUTDOWN_LED, OUTPUT);
+  digitalWrite(SHUTDOWN_LED, HIGH);
   SCState = 0;
 }
 void(* resetFunc) (void) = 0;//declare reset function at address 0
@@ -10,15 +21,16 @@ void shutdown()
 {
   SMCR = 0x05;
   //set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-  pinMode(24, INPUT);
+  pinMode(SHUTDOWN_WAKEUP, INPUT);
   EICRA = 0x00; //Low Level Interrupt
   EIMSK = 0x08; //Enable INT3
   Display_Shutdown();
-  digitalWrite(14, HIGH);
+  digitalWrite(CAN_STB, HIGH);
+  digitalWrite(SHUTDOWN_LED, LOW);
   PRR = 0xFF;
   sleep_cpu();
   PRR = 0x00;
-  digitalWrite(14, LOW);
+  digitalWrite(SHUTDOWN_LED, HIGH);
   delay(500);
   
   EIMSK = 0x00; //Disable INT3
@@ -32,25 +44,30 @@ void ShutdownController_cyclic()
   static uint32_t T15_offTime = millis();
   switch (SCState)
   {
-    case 0:
-      if (millis() >= 5000)SCState = 1;
+    case SHUTDOWN_STATE_BOOT_UP:
+      if (millis() >= 60000)SCState = SHUTDOWN_STATE_NORMAL_OPERATION;
+      if (T15_validator.get() == 1)SCState = SHUTDOWN_STATE_NORMAL_OPERATION;
       break;
-    case 1:
+    case SHUTDOWN_STATE_NORMAL_OPERATION:
       if (T15_validator.get() != 1)
       {
-        T15_offTime = millis();
-        SCState = 2;
+        Display_Powersave(true);
+        SCState = SHUTDOWN_STATE_T15_OFF;
+      }
+      else
+      {
+        Display_Powersave(false);  
       }
       break;
-    case 2:
+    case SHUTDOWN_STATE_T15_OFF:
       if (T15_validator.get() > 0)
       {
-        SCState = 1;
+        SCState = SHUTDOWN_STATE_NORMAL_OPERATION;
         break;
       }
       else
       {
-        if (millis() > T15_offTime + 5000)
+        if(CAN_Active.get() == 0 && DISABLE_SHUTDOWN!=1)
         {
           shutdown();
         }
