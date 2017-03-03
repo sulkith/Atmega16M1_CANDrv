@@ -1,8 +1,8 @@
 #include "pinning.h"
 
-#define DISABLE_SHUTDOWN 1
+#define ENABLE_SHUTDOWN false
+#define ENABLE_POWERSAVE false
 
-uint8_t SCState = 0;
 #define SHUTDOWN_STATE_BOOT_UP 0
 #define SHUTDOWN_STATE_NORMAL_OPERATION 1
 #define SHUTDOWN_STATE_T15_OFF 2
@@ -51,12 +51,12 @@ void ShutdownController_cyclic()
     case SHUTDOWN_STATE_NORMAL_OPERATION:
       if (T15_validator.get() != 1)
       {
-        Display_Powersave(true);
+        if(ENABLE_POWERSAVE)Display_Powersave(true);
         SCState = SHUTDOWN_STATE_T15_OFF;
       }
       else
       {
-        Display_Powersave(false);  
+        if(ENABLE_POWERSAVE)Display_Powersave(false);  
       }
       break;
     case SHUTDOWN_STATE_T15_OFF:
@@ -67,7 +67,7 @@ void ShutdownController_cyclic()
       }
       else
       {
-        if(CAN_Active.get() == 0 && DISABLE_SHUTDOWN!=1)
+        if(ENABLE_SHUTDOWN && CAN_Active.get() == 0)
         {
           shutdown();
         }

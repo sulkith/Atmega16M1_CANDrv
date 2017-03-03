@@ -17,7 +17,7 @@ void Display_Init()
 {
   pinMode(DISPLAY_POWER_LS, OUTPUT);
   pinMode(DISPLAY_BL, OUTPUT);
-  
+
   //digitalWrite(DP_POWER_LS, LOW);//Deactivate Power to Display
   //delay(50);
   digitalWrite(DISPLAY_POWER_LS, HIGH);//Activate Power to Display
@@ -38,19 +38,19 @@ void Display_Shutdown()
 }
 void Display_Powersave(bool powersave)
 {
-  //if(powersave)
-    //digitalWrite(DISPLAY_BL, LOW);//cut Power to the Backlight
-  //else
-  //  digitalWrite(DISPLAY_BL, HIGH);//enable Power to the Backlight
-    
+  if(powersave)
+    digitalWrite(DISPLAY_BL, LOW);//cut Power to the Backlight
+  else
+    digitalWrite(DISPLAY_BL, HIGH);//enable Power to the Backlight
+
 }
 inline uint8_t tmot_to_x(int16_t tmot)
 {
-  if(tmot < 0)
+  if (tmot < 0)
     return 2;
-  if(tmot > 156)
-    return 156+2;
-  return (uint8_t) tmot+2;
+  if (tmot > 156)
+    return 156 + 2;
+  return (uint8_t) tmot + 2;
 }
 
 void Display_show_tmot()
@@ -61,10 +61,10 @@ void Display_show_tmot()
   const uint16_t TMOT_pos_y = 45;
   static char tmot_old_txt[] = " - ";
   char tmot_txt[] = " - ";
-  char tmot_mask[] = " - ";
+  char tmot_mask[] = "   ";
 
   TFTscreen.setTextSize(TMOT_textsize);
-  
+
   if ((tmot_loc >= 0))
   {
     tmot_txt[0] = (tmot_loc / 100) + 0x30;
@@ -73,23 +73,17 @@ void Display_show_tmot()
   }
   else
   {
-    tmot_txt[0] = '-';
-    tmot_txt[1] = ((-tmot_loc) % 100) / 10 + 0x30;
-    tmot_txt[2] = ((-tmot_loc) % 10) + 0x30;
-    if (tmot_loc = -100)
+    if (tmot_loc != -100) //if tmot_loc = -100 tmot_txt is already " - "
     {
-      tmot_txt[0] = ' ';
-      tmot_txt[1] = '-';
-      tmot_txt[2] = ' ';
+      tmot_txt[0] = '-';
+      tmot_txt[1] = ((-tmot_loc) % 100) / 10 + 0x30;
+      tmot_txt[2] = ((-tmot_loc) % 10) + 0x30;
     }
   }
+  
   for (uint8_t i; i < 3; ++i)
   {
-    if (tmot_old_txt[i] == tmot_txt[i])
-    {
-      tmot_mask[i] = ' ';
-    }
-    else
+    if (tmot_old_txt[i] != tmot_txt[i])
     {
       tmot_mask[i] = tmot_old_txt[i];
     }
@@ -101,21 +95,22 @@ void Display_show_tmot()
   TFTscreen.text(tmot_txt, TMOT_pos_x, TMOT_pos_y);
   for (uint8_t i = 0; i < 3; ++i)
     tmot_old_txt[i] = tmot_txt[i];
-  if(tmot_loc < 0)
+
+  if (tmot_loc < 0)
   {
     TFTscreen.fill(COLOR_BG);
     TFTscreen.stroke(COLOR_BG);
-    TFTscreen.rect(2,17,156,20);
+    TFTscreen.rect(2, 17, 156, 20);
   }
   else
   {
-    uint8_t xpos = tmot_to_x(tmot_loc)-2;
-    if(tmot_loc < 70)
+    uint8_t xpos = tmot_to_x(tmot_loc) - 2;
+    if (tmot_loc < 70)
     {
       TFTscreen.stroke(COLOR_FG_COLD);
       TFTscreen.fill(COLOR_FG_COLD);
     }
-    else if(tmot_loc < 110)
+    else if (tmot_loc < 110)
     {
       TFTscreen.stroke(COLOR_FG_OK);
       TFTscreen.fill(COLOR_FG_OK);
@@ -125,12 +120,12 @@ void Display_show_tmot()
       TFTscreen.stroke(COLOR_FG_HOT);
       TFTscreen.fill(COLOR_FG_HOT);
     }
-    TFTscreen.rect(2,17,xpos,20);
+    TFTscreen.rect(2, 17, xpos, 20);
     TFTscreen.fill(COLOR_BG);
     TFTscreen.stroke(COLOR_BG);
-    TFTscreen.rect(xpos+2,17,156-xpos,20);
+    TFTscreen.rect(xpos + 2, 17, 156 - xpos, 20);
   }
-  
+
 }
 void Display_show_Powerstat()
 {
@@ -139,23 +134,23 @@ void Display_show_Powerstat()
   TFTscreen.stroke(COLOR_BG);
   TFTscreen.text(PowerStat, 0, 100);
   PowerStat[0] = (T15_validator.get()) ? '1' : '0';
-  PowerStat[1] = (StandbyOn_validator.get())?'1':'0';
-  PowerStat[2] = (KeyInLock_validator.get())?'1':'0';
-  //PowerStat[3] = (EngineStarting)?'1':'0';
+  PowerStat[1] = (StandbyOn_validator.get()) ? '1' : '0';
+  PowerStat[2] = (KeyInLock_validator.get()) ? '1' : '0';
+  PowerStat[3] = (SCState%10)+0x30;
   PowerStat[4] = 0;
   TFTscreen.stroke(COLOR_FG);
   TFTscreen.text(PowerStat, 0, 100);
-  TFTscreen.setTextSize(5);  
+  TFTscreen.setTextSize(5);
 }
 
 void Display_static_tmot()
 {
-    TFTscreen.stroke(COLOR_FG);
+  TFTscreen.stroke(COLOR_FG);
   TFTscreen.fill(COLOR_BG);
-  TFTscreen.rect(0,15,160,24);
+  TFTscreen.rect(0, 15, 160, 24);
   //TFTscreen.fill(255,255,255);
   //TFTscreen.rect(2,17,100,20);
-  TFTscreen.line(2,15,2,5);
+  TFTscreen.line(2, 15, 2, 5);
 
   uint8_t x_m40 = tmot_to_x(-40);
   uint8_t x_0 = tmot_to_x(0);
@@ -163,21 +158,21 @@ void Display_static_tmot()
   uint8_t x_100 = tmot_to_x(100);
   uint8_t x_150 = tmot_to_x(150);
   uint8_t x_215 = tmot_to_x(215);
-  
-  TFTscreen.setTextSize(1);
-  TFTscreen.line(x_0,15,x_0,5);
-  TFTscreen.text("0", 4, 2);
-  
-  TFTscreen.line(x_50,15,x_50,5);
-  TFTscreen.text(" 50", x_50-18, 2);
-  
-  TFTscreen.line(x_100,15,x_100,5);
-  TFTscreen.text("100", x_100-18, 2);
 
-  TFTscreen.line(x_150,15,x_150,5);
-  TFTscreen.text("150", x_150-18, 2);
-  
-  
+  TFTscreen.setTextSize(1);
+  TFTscreen.line(x_0, 15, x_0, 5);
+  TFTscreen.text("0", 4, 2);
+
+  TFTscreen.line(x_50, 15, x_50, 5);
+  TFTscreen.text(" 50", x_50 - 18, 2);
+
+  TFTscreen.line(x_100, 15, x_100, 5);
+  TFTscreen.text("100", x_100 - 18, 2);
+
+  TFTscreen.line(x_150, 15, x_150, 5);
+  TFTscreen.text("150", x_150 - 18, 2);
+
+
   TFTscreen.setTextSize(3);
   // write the text to the top left corner of the screen
   TFTscreen.text("tmot: ", 0, 45);

@@ -10,6 +10,7 @@
 #define MIN(x,y)((x<y)?x:y)
 
 uint8_t T15_st;
+uint8_t SCState;
 MessageValidator<uint8_t> CAN_Active(1000,0,0);
 MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
 MessageValidator<uint8_t> KeepRunning(10000,0,0);
@@ -98,11 +99,6 @@ void debugCanStatus(uint16_t id = 0)
 
 void loop() {
   if(T15_validator.get())CANDrv_FRMMan_Send_Msg(0);
-  mob_settings ms;
-  uint8_t buffer[8];
-  ms.data = (uint8_t*)&buffer;
-  CANDrv_FRMMan_Get_Msg(2,&ms);
-  tmot_validator.update();
   Display_cyclic();
   ShutdownController_cyclic();
   
