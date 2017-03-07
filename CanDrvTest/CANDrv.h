@@ -3,7 +3,7 @@
 
     This File describes the Interface of the CANDrv and the FRMMan
 */
-#if defined(__AVR_ATmega16M1__)
+#if defined(__AVR_ATmega16M1__) || defined(__AVR_ATmega32M1__) || defined(__AVR_ATmega64M1__)
   #define NB_MOB  6
 #endif
 
