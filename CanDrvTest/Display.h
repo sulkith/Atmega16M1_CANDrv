@@ -67,8 +67,8 @@ void Display_show_tmot()
 
   if ((tmot_loc >= 0))
   {
-    tmot_txt[0] = (tmot_loc / 100) + 0x30;
-    tmot_txt[1] = (tmot_loc % 100) / 10 + 0x30;
+    tmot_txt[0] = (tmot_loc>=100)?((tmot_loc / 100) + 0x30)     :' ';
+    tmot_txt[1] = (tmot_loc>=10) ?((tmot_loc % 100) / 10 + 0x30):' ';
     tmot_txt[2] = (tmot_loc % 10) + 0x30;
   }
   else
