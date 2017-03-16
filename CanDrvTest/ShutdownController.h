@@ -1,6 +1,6 @@
 #include "pinning.h"
 
-#define ENABLE_SHUTDOWN false
+#define ENABLE_SHUTDOWN true
 #define ENABLE_POWERSAVE false
 
 #define SHUTDOWN_STATE_BOOT_UP 0
