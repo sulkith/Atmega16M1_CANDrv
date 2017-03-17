@@ -66,9 +66,9 @@ void setup() {
   data_7e0[5] = 0x55;
   data_7e0[6] = 0x66;
   data_7e0[7] = 0x77;
+  Display_Init();
   CANDrv_Init(CAN_500k); //init CAN
   CANDrv_FRMMan_Init(CAN_Config);
-  Display_Init();
   delay(100);
   ShutdownController_Init();
   sei();
@@ -98,6 +98,7 @@ void debugCanStatus(uint16_t id = 0)
 }
 
 void loop() {
+  delay(500);
   if(T15_validator.get())CANDrv_FRMMan_Send_Msg(0);
   Display_cyclic();
   ShutdownController_cyclic();

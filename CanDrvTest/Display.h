@@ -1,7 +1,5 @@
 #include "pinning.h"
 
-
-
 #define COLOR_BG 0,0,0
 #define COLOR_DEL COLOR_BG
 #define COLOR_FG 0,70,255
