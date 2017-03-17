@@ -3,6 +3,7 @@
 
 
 #define COLOR_BG 0,0,0
+#define COLOR_DEL COLOR_BG
 #define COLOR_FG 0,70,255
 #define COLOR_FG_COLD 255,0,0
 #define COLOR_FG_OK 0,255,0
@@ -10,6 +11,7 @@
 
 
 TFT TFTscreen = TFT(DISPLAY_CS, DISPLAY_DC, DISPLAY_RST);
+
 
 void Display_Init_StaticText();
 
@@ -59,9 +61,9 @@ void Display_show_tmot()
   const uint16_t TMOT_textsize = 3;
   const uint16_t TMOT_pos_x = 85;
   const uint16_t TMOT_pos_y = 45;
-  static char tmot_old_txt[] = " - ";
-  char tmot_txt[] = " - ";
-  char tmot_mask[] = "   ";
+  static char tmot_old_txt[4] = " - ";
+  char tmot_txt[4] = " - ";
+  char tmot_mask[4] = "   ";
 
   TFTscreen.setTextSize(TMOT_textsize);
 
@@ -80,19 +82,24 @@ void Display_show_tmot()
       tmot_txt[2] = ((-tmot_loc) % 10) + 0x30;
     }
   }
-  
-  for (uint8_t i; i < 3; ++i)
+  uint8_t maskcount = 0;
+  for (uint8_t i=0; i < 3; ++i)
   {
-    if (tmot_old_txt[i] != tmot_txt[i])
+    if ((uint8_t)tmot_old_txt[i] != (uint8_t)tmot_txt[i])
     {
       tmot_mask[i] = tmot_old_txt[i];
+      maskcount++;
     }
   }
 
-  TFTscreen.stroke(COLOR_BG);
+if(maskcount>0)
+{
+  TFTscreen.stroke(COLOR_DEL);
   TFTscreen.text(tmot_mask, TMOT_pos_x, TMOT_pos_y);
+}
   TFTscreen.stroke(COLOR_FG);
   TFTscreen.text(tmot_txt, TMOT_pos_x, TMOT_pos_y);
+  
   for (uint8_t i = 0; i < 3; ++i)
     tmot_old_txt[i] = tmot_txt[i];
 
@@ -125,13 +132,12 @@ void Display_show_tmot()
     TFTscreen.stroke(COLOR_BG);
     TFTscreen.rect(xpos + 2, 17, 156 - xpos, 20);
   }
-
 }
 void Display_show_Powerstat()
 {
   static char PowerStat[] = "0000";
   TFTscreen.setTextSize(2);
-  TFTscreen.stroke(COLOR_BG);
+  TFTscreen.stroke(COLOR_DEL);
   TFTscreen.text(PowerStat, 0, 100);
   PowerStat[0] = (T15_validator.get()) ? '1' : '0';
   PowerStat[1] = (StandbyOn_validator.get()) ? '1' : '0';
