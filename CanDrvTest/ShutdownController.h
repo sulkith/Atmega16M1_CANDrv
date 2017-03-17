@@ -17,10 +17,20 @@ void ShutdownController_Init()
   SCState = 0;
 }
 void(* resetFunc) (void) = 0;//declare reset function at address 0
+void allPinsToPowersave()
+{
+  for(int i = 0; i <= 26; ++i)
+  {
+    pinMode(i, INPUT);
+    digitalWrite(i, LOW);
+  }
+  pinMode(SHUTDOWN_WAKEUP, INPUT);
+}
 void shutdown()
 {
   SMCR = 0x05;
-  //set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  allPinsToPowersave();
   pinMode(SHUTDOWN_WAKEUP, INPUT);
   EICRA = 0x00; //Low Level Interrupt
   EIMSK = 0x08; //Enable INT3
