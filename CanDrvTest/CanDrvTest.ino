@@ -7,6 +7,7 @@
 
 
 
+
 #define MIN(x,y)((x<y)?x:y)
 
 uint8_t T15_st;
@@ -16,7 +17,7 @@ MessageValidator<uint8_t> T15_validator(1000,0,&T15_st);
 MessageValidator<uint8_t> KeepRunning(10000,0,0);
 MessageValidator<uint8_t> StandbyOn_validator(1000,0,0);
 MessageValidator<uint8_t> KeyInLock_validator(1000,0,0);
-MessageValidator<int16_t> tmot_validator(1000,-100,0);
+MessageValidator<int16_t> tmot_validator(2000,-100,0);
 #include "Display.h"
 #include "ShutdownController.h"
 
@@ -56,6 +57,8 @@ void receiveData_restart_7e8(uint8_t mob_NR)
 ISR(INT3_vect)
 {
 }
+
+#include "MessageScheduler.h"
 void setup() {
   
   data_7e0[0] = 0x02; //additional Data Bytes
@@ -67,6 +70,7 @@ void setup() {
   data_7e0[6] = 0x66;
   data_7e0[7] = 0x77;
   Display_Init();
+  MessageScheduler_Init();
   CANDrv_Init(CAN_500k); //init CAN
   CANDrv_FRMMan_Init(CAN_Config);
   delay(100);
@@ -98,8 +102,8 @@ void debugCanStatus(uint16_t id = 0)
 }
 
 void loop() {
-  delay(500);
-  if(T15_validator.get())CANDrv_FRMMan_Send_Msg(0);
+  MessageScheduler_cyclic();
+  //if(T15_validator.get())CANDrv_FRMMan_Send_Msg(0);
   Display_cyclic();
   ShutdownController_cyclic();
   
