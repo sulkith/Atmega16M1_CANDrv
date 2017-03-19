@@ -226,7 +226,6 @@ void Display_Init_StaticText()
 void Display_cyclic()
 {
   Display_show_tmot();
-  Display_show_toil();
   Display_show_Powerstat();
 }
 
