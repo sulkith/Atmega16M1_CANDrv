@@ -52,6 +52,27 @@ typedef enum
   UNUSED = 0x00
 }mob_purpose;
 
+/** \brief MOB Status
+ Enumerator for the Status of the MOB
+*/
+typedef enum
+{
+  /**TX PENDING*/
+  TX_PENDING = 0x03, 
+  /**TX SUCCESSFULL*/
+  TX_OK = 0x05, 
+  /**RX PENDING*/
+  RX_PENDING = 0x02, 
+  /**RX SUCCESSFULL*/
+  RX_OK = 0x04,  
+  /**ERROR*/
+  RX_ERROR = 0xFE,  
+  /**ERROR*/
+  TX_ERROR = 0xFF,  
+  /** MOB is unused*/
+  IDLE = 0x00
+}mob_status;
+
 /**\brief Settings for a MOB*/
 struct mob_settings
 {
@@ -137,6 +158,16 @@ uint8_t CANDrv_Init(CanBaudrate baudrate);
   @return 1 on success. 0 in case of an error.
 */
 uint8_t CANDrv_FRMMan_Get_Msg(uint8_t index, mob_settings *ms);
+/**
+  \fn CANDrv_FRMMan_get_MSG_State(uint8_t index)
+  \brief get status of the MOB
+  
+  This function reads the status of the MOB with the given index
+  @param index the index of the mob to read
+  @return status of the MOB
+*/
+mob_status CANDrv_FRMMan_Get_MSG_State(uint8_t index);
+
 /**
   \fn CANDrv_FRMMan_Send_Msg(uint8_t index)
   \brief sends a configured Message

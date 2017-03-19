@@ -231,6 +231,23 @@ uint8_t CANDrv_FRMMan_Get_Msg(uint8_t index, mob_settings *ms)
 {
   return CANDrv_FRMMan_Get_Msg(index, ms, 0);
 }
+
+mob_status CANDrv_FRMMan_Get_MSG_State(uint8_t index)
+{
+  CANPAGEHandler cph(index);
+  uint8_t direction = (CANCDMOB &0xC0) >> 6;
+  mob_status result = IDLE;
+  if(direction == 0) return (mob_status)0;
+  if(direction == 1) result = (mob_status)0x01;
+  if((CANSTMOB & 0x1F)>0)
+    return (direction == 1)?TX_ERROR:RX_ERROR;
+  if((CANSTMOB & 0x60)>0)
+    return (direction == 1)?TX_OK:RX_OK;
+  return (direction == 1)?TX_PENDING:RX_PENDING;
+  
+  
+}
+
 ISR(CAN_INT_vect)
 {
   for (uint8_t i = 0; i < NB_MOB; ++i)
