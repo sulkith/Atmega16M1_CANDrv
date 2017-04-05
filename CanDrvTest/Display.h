@@ -7,13 +7,19 @@
 #define COLOR_FG_OK 0,255,0
 #define COLOR_FG_HOT 0,0,255
 
+const uint16_t MIIST_BAR_pos_y = 64;
+const uint16_t MIIST_BAR_size_y = 14;
+const uint16_t MIIST_STATIC_textsize = 3;
+const uint16_t MIIST_STATIC_pos_x = 2;
+const uint16_t MIIST_STATIC_pos_y = MIIST_BAR_pos_y + MIIST_BAR_size_y + 19;
+
 //TMOT_BAR
-const uint16_t TMOT_BAR_pos_y = 2;
+const uint16_t TMOT_BAR_pos_y = 5;
 const uint16_t TMOT_BAR_size_y = 14;//24
 
 //TMOT_TEXT
 const uint16_t TMOT_STATIC_pos_x = 2;
-const uint16_t TMOT_STATIC_pos_y = TMOT_BAR_pos_y + TMOT_BAR_size_y + 18;
+const uint16_t TMOT_STATIC_pos_y = TMOT_BAR_pos_y + TMOT_BAR_size_y + 19;
 const uint16_t TMOT_textsize = 3;//3
 const uint16_t TMOT_pos_x = 85 + TMOT_STATIC_pos_x; //85
 const uint16_t TMOT_pos_y = TMOT_STATIC_pos_y;//45
@@ -26,9 +32,12 @@ const uint16_t POWERSTAT_pos_y = 110;//110
 
 
 TFT TFTscreen = TFT(DISPLAY_CS, DISPLAY_DC, DISPLAY_RST);
-
+#define DISPLAY_WELCOME 0
+#define DISPLAY_ENGT_ENGLOAD 1
+uint8_t DisplayMode = DISPLAY_WELCOME;
 
 void Display_Init_StaticText();
+void Display_Init_WelcomeText();
 
 void Display_Init()
 {
@@ -38,8 +47,19 @@ void Display_Init()
   digitalWrite(DISPLAY_POWER_LS, HIGH);//Activate Power to Display
 
   TFTscreen.begin();
-  Display_Init_StaticText();
+  Display_Init_WelcomeText();
+  //Display_Init_StaticText();
   digitalWrite(DISPLAY_BL, HIGH);
+}
+void Display_Init_WelcomeText()
+{
+  TFTscreen.background(COLOR_BG);
+  TFTscreen.setRotation(1);
+  TFTscreen.stroke(COLOR_FG);
+  TFTscreen.setTextSize(3);
+  TFTscreen.text("WELCOME", 18, 25);
+  TFTscreen.text("MICHAEL", 18, 65);
+  //TFTscreen.text("WELCOME", 17, 50);
 }
 void Display_Shutdown()
 {
@@ -83,6 +103,75 @@ uint8_t calculateMask(char* old_string, char* new_string, uint8_t len, char* mas
     }
   }
   return maskcount;
+}
+void Display_static_miist()
+{
+
+  TFTscreen.stroke(COLOR_FG);
+  TFTscreen.fill(COLOR_BG);
+  TFTscreen.rect(0, 13 + MIIST_BAR_pos_y, 160, MIIST_BAR_size_y);
+  TFTscreen.stroke(COLOR_FG);
+
+  TFTscreen.setTextSize(MIIST_STATIC_textsize);
+  TFTscreen.text("EngLoad", MIIST_STATIC_pos_x, MIIST_STATIC_pos_y);
+  
+  //Smooth Edges
+  TFTscreen.point(1, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(1, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(2, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(2, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(158, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(158, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(157, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(157, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.stroke(COLOR_BG);
+  TFTscreen.point(0, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(0, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(2, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(2, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(1, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(1, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(0, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(0, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(159, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(159, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(158, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(158, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(157, 13 + MIIST_BAR_pos_y);
+  TFTscreen.point(157, 12 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+  TFTscreen.point(159, 14 + MIIST_BAR_pos_y);
+  TFTscreen.point(159, 11 + MIIST_BAR_pos_y+MIIST_BAR_size_y);
+}
+void Display_show_miist()
+{
+  static uint32_t last_millis = millis()/10;
+  static uint8_t miist_loc_old = 0;
+  uint8_t miist_loc = miist_validator.get();
+  if(miist_loc_old > miist_loc)
+  {
+    uint32_t dT = ((millis()/10)-last_millis);
+    if(miist_loc_old > dT*2)
+      miist_loc_old -= dT*2;
+    else
+      miist_loc_old = 0;
+  }
+  if(miist_loc_old < miist_loc)
+    miist_loc_old = miist_loc;
+    
+  last_millis = millis()/10;
+  
+  //156 max Width
+  uint16_t width = (((uint16_t)miist_loc_old)*156)/255;
+
+  TFTscreen.fill(COLOR_BG);
+  TFTscreen.stroke(COLOR_BG);
+  TFTscreen.rect(2+width, 15 + MIIST_BAR_pos_y, 156-width, MIIST_BAR_size_y - 4);
+  if(width>0)
+  {
+    TFTscreen.fill(COLOR_FG_OK);
+    TFTscreen.stroke(COLOR_FG_OK);
+    TFTscreen.rect(2, 15 + MIIST_BAR_pos_y, width, MIIST_BAR_size_y - 4);
+  }
 }
 void Display_show_tmot()
 {
@@ -210,10 +299,37 @@ void Display_static_tmot()
 
   TFTscreen.setTextSize(TMOT_STATIC_textsize);
   // write the text to the top left corner of the screen
-  TFTscreen.text("tmot: ", TMOT_STATIC_pos_x, TMOT_STATIC_pos_y);
+  TFTscreen.text("EngT: ", TMOT_STATIC_pos_x, TMOT_STATIC_pos_y);
 
   TFTscreen.setTextSize(TMOT_textsize);
   TFTscreen.text(" - ", TMOT_pos_x, TMOT_pos_y);
+
+  //Smooth Edges
+  TFTscreen.point(1, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(1, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(2, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(2, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(158, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(158, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(157, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(157, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.stroke(COLOR_BG);
+  TFTscreen.point(0, 13 + TMOT_BAR_pos_y);
+  TFTscreen.point(0, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(2, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(1, 13 + TMOT_BAR_pos_y);
+  TFTscreen.point(1, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(0, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(0, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(159, 13 + TMOT_BAR_pos_y);
+  TFTscreen.point(159, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(158, 13 + TMOT_BAR_pos_y);
+  TFTscreen.point(158, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(157, 13 + TMOT_BAR_pos_y);
+  TFTscreen.point(157, 12 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+  TFTscreen.point(159, 14 + TMOT_BAR_pos_y);
+  TFTscreen.point(159, 11 + TMOT_BAR_pos_y+TMOT_BAR_size_y);
+
 }
 void Display_Init_StaticText()
 {
@@ -222,10 +338,24 @@ void Display_Init_StaticText()
   TFTscreen.setRotation(1);
 
   Display_static_tmot();
+  Display_static_miist();
 }
 void Display_cyclic()
 {
-  Display_show_tmot();
-  Display_show_Powerstat();
+  if(SCState != /*SHUTDOWN_STATE_BOOT_UP*/0)
+  {
+    if(DisplayMode != DISPLAY_ENGT_ENGLOAD)
+    {
+        Display_Init_StaticText();
+        DisplayMode = DISPLAY_ENGT_ENGLOAD;
+    }
+    Display_show_tmot();
+    Display_show_miist();
+    //Display_show_Powerstat();
+  }
+  else
+  {
+    Display_show_Powerstat();  
+  }
 }
 

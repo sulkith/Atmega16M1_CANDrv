@@ -29,15 +29,16 @@ void MessageScheduler_cyclic()
         case 2:
         case 3:
         case 4:
-          break;
         case 5:
-          break;
         case 6:
         case 7:
         case 8:
+          data_7e0[2] = 0x04; //request Load Value;
+          CANDrv_FRMMan_Send_Msg(0);
           break;
-          
         case 10:
+          data_7e0[2] = 0x04; //request Load Value;
+          CANDrv_FRMMan_Send_Msg(0);
         default:
           currentMessage = 0;
           break;

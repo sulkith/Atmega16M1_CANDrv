@@ -18,6 +18,7 @@ MessageValidator<uint8_t> KeepRunning(10000,0,0);
 MessageValidator<uint8_t> StandbyOn_validator(1000,0,0);
 MessageValidator<uint8_t> KeyInLock_validator(1000,0,0);
 MessageValidator<int16_t> tmot_validator(2000,-100,0);
+MessageValidator<uint8_t> miist_validator(200,0,0);
 #include "Display.h"
 #include "ShutdownController.h"
 
@@ -50,6 +51,10 @@ void receiveData_restart_7e8(uint8_t mob_NR)
     if (data_7e8[2] == 0x05) //tmot
     {
       tmot_validator.set(data_7e8[3] - 40);
+    }
+    if (data_7e8[2] == 0x04) //miist
+    {
+      miist_validator.set(data_7e8[3]);
     }
   }
   CAN_Active.set(1);

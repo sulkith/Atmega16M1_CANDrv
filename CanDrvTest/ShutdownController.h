@@ -1,7 +1,7 @@
 #include "pinning.h"
 
 #define ENABLE_SHUTDOWN true
-#define ENABLE_POWERSAVE false
+#define ENABLE_POWERSAVE true
 
 #define SHUTDOWN_STATE_BOOT_UP 0
 #define SHUTDOWN_STATE_NORMAL_OPERATION 1
@@ -25,6 +25,12 @@ void allPinsToPowersave()
     digitalWrite(i, LOW);
   }
   pinMode(SHUTDOWN_WAKEUP, INPUT);
+  pinMode(DISPLAY_CS, INPUT_PULLUP);
+  pinMode(DISPLAY_DC, INPUT_PULLUP);
+  pinMode(DISPLAY_RST, INPUT_PULLUP);
+  pinMode(DISPLAY_BL, INPUT_PULLUP);
+  pinMode(DISPLAY_MOSI, INPUT_PULLUP);
+  pinMode(DISPLAY_SCK, INPUT_PULLUP);
 }
 void shutdown()
 {
